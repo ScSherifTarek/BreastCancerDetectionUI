@@ -19,7 +19,7 @@ def predict():
         file = request.files['file']
         if file and allowed_file(file.filename):
             _, file_extension = os.path.splitext(file.filename)
-            file_path = os.path.join('static/images', uuid.uuid4()+file_extension)
+            file_path = os.path.join('static/images', str(uuid.uuid4())+file_extension)
             file.save(file_path)
             img = read_image(file_path)
             notHealthyPercentage = _predict(img)
